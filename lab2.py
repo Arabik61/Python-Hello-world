@@ -1,20 +1,18 @@
 dictionary = {'<': '&lt', '>': '&gt', '"': '&quot', '&': '&amp'}
 
 
-def decorator(function):
+def escape_html(function):
     def wrapper(string):
         tag = function(string)
-        new_tag = ""
-        for x in tag:
-            if x in dictionary.keys():
-                new_tag += dictionary[x]
-            else:
-                new_tag += x
-        return new_tag
+
+        new_tag = [dictionary[char] if char in dictionary.keys() else char for char in tag]
+
+        return ''.join(new_tag)
+
     return wrapper
 
 
-@decorator
+@escape_html
 def get_tag(tag):
     return tag
 
