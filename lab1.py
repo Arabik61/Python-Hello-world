@@ -1,17 +1,12 @@
 import random
 
-arr = []
-size = int(input("Введіть кількість елементів списку: "))
-i = 0
-sumArr = 0
 
-while i < size:
-    arr.append(random.randint(0, 10))
-    i += 1
+def calculate():
+    suma = sum(arr)
+    return {'sum': suma, 'avg': suma / len(arr)}
 
-for x in arr:
-    sumArr += x
 
-print(arr)
-print("Сума елементів списку = " + str(sumArr))
-print("Середнє значення елементів масиву = " + str(sumArr/size))
+if __name__ == '__main__':
+    arr = [random.randint(0, 10) for i in range(int(input("Введіть кількість елементів списку: ")))]
+    print(arr)
+    print(calculate())
